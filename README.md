@@ -62,7 +62,8 @@ docker image rm -f $(docker image ls -q -f reference=micimica/imagemagick:latest
 |:---|:---|:---|
 | [Poster - B1 size](https://factory.pixiv.net/products/fast_poster) | images-dist/mm47_poster_b1.png | [link](https://micimica.booth.pm/items/2507569) |
 | [Poster - B2 size](https://factory.pixiv.net/products/fast_poster) | images-dist/mm47_poster_b2.png | [link](https://micimica.booth.pm/items/2507569) |
-| Paper - A2-A4 size<br>(with home printer) | images-dist/mm47_a3.png | |
+| Paper - A3 size<br>(with home printer) | images-dist/mm47_a3.png | |
+| Paper - A4 size<br>(with home printer) | images-dist/mm47_a4.png | |
 
 ## License
 
