@@ -42,6 +42,7 @@ chmod u+x *.sh
 ./factory_poster_b2.sh
 
 ./printer_paper_a3.sh
+./printer_paper_a4.sh
 
 chmod 777 images-dist/*.png
 exit
@@ -60,10 +61,10 @@ docker image rm -f $(docker image ls -q -f reference=micimica/imagemagick:latest
 ## Reference of Goods / Image
 | Goods Variation | Image File | Example |
 |:---|:---|:---|
-| [Poster - B1 size](https://factory.pixiv.net/products/fast_poster) | images-dist/mm47_poster_b1.png | [link](https://micimica.booth.pm/items/2507569) |
-| [Poster - B2 size](https://factory.pixiv.net/products/fast_poster) | images-dist/mm47_poster_b2.png | [link](https://micimica.booth.pm/items/2507569) |
-| Paper - A3 size<br>(with home printer) | images-dist/mm47_a3.png | |
-| Paper - A4 size<br>(with home printer) | images-dist/mm47_a4.png | |
+| [Poster - B1 size](https://factory.pixiv.net/products/fast_poster) | images-dist/mm47-3_poster_b1.png | [link](https://micimica.booth.pm/items/2616742) |
+| [Poster - B2 size](https://factory.pixiv.net/products/fast_poster) | images-dist/mm47-3_poster_b2.png | [link](https://micimica.booth.pm/items/2616742) |
+| Paper - A3 size<br>(with home printer) | images-dist/mm47-3_a3.png | |
+| Paper - A4 size<br>(with home printer) | images-dist/mm47-3_a4.png | |
 
 ## License
 
