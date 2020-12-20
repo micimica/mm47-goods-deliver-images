@@ -4,17 +4,21 @@
 # https://factory.pixiv.net/products/fast_poster
 # -----------------------------
 # image size      : 521 x 734 mm (7180 x 10115 px recommended)
-# circle size     : 20.4 mm
-# circle count    : 36 (per 734mm)
-# repeatable unit : (10115 / 36) x 2 = 562 px
+# circle size     : 81.56 mm
+# circle count    : 9 (per 724mm)    *724mm = 734mm - margin(5mm x 2)
+# repeatable unit : (10115 * (724/734) / 9) x 2 = 2217 px
 # -----------------------------
 
-UNITSIZE=562
+RESFILE=resources/mm47-3_unit.svg
+PRODUCT=mm47-3_poster_b2
+UNITSIZE=2217
 TEMPSIZE=$(( $UNITSIZE * 3 ))
+IMGH=10115 ; REPTY=6
+IMGW=7180  ; REPTX=4
 
-convert -density 1200 -resize ${TEMPSIZE}x${TEMPSIZE} -fuzz 10% -trim resources/mm47-1_unit.svg mm47_poster_b2_unit_temp.png
-convert -density 1200 -resize ${UNITSIZE}x${UNITSIZE} mm47_poster_b2_unit_temp.png mm47_poster_b2_unit.png
-convert -append `seq 1 20 | awk '{printf "mm47_poster_b2_unit.png "}'` mm47_poster_b2_line.png
-convert +append `seq 1 14 | awk '{printf "mm47_poster_b2_line.png "}'` mm47_poster_b2_rect.png
-convert -gravity center -crop 7180x10115+0+0 mm47_poster_b2_rect.png images-dist/mm47_poster_b2.png
-rm -f mm47_poster_b2_*.png
+convert -density 1200 -resize ${TEMPSIZE}x${TEMPSIZE} -fuzz 10% -trim $RESFILE $PRODUCT-temp.png
+convert -density 1200 -resize ${UNITSIZE}x${UNITSIZE} $PRODUCT-temp.png $PRODUCT-temp_.png ; pngquant --force --speed 1 --nofs --strip $PRODUCT-temp_.png --output $PRODUCT-unit.png
+convert -append `seq 1 $REPTY | awk '{printf "'$PRODUCT'-unit.png "}'` $PRODUCT-line.png
+convert +append `seq 1 $REPTX | awk '{printf "'$PRODUCT'-line.png "}'` $PRODUCT-rect.png
+convert -gravity center -crop ${IMGW}x${IMGH}+0+0 $PRODUCT-rect.png $PRODUCT-full.png ; pngquant --force --speed 1 --nofs --strip $PRODUCT-full.png --output images-dist/$PRODUCT.png
+rm -f $PRODUCT-*.png
